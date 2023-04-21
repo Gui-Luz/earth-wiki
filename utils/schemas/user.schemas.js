@@ -1,8 +1,8 @@
-import Joi from "joi";
+import Joi from 'joi'
 
 const idSchema = Joi.object({
-    id: Joi.number().integer().required()
-  });
+  id: Joi.number().integer().required()
+})
 
 const userSchema = Joi.object({
   id: Joi.number().integer(),
@@ -13,9 +13,9 @@ const userSchema = Joi.object({
   password: Joi.string().required(),
   role: Joi.string(),
   createdAt: Joi.date()
-});
+})
 
 export default {
-    idSchema,
-    userSchema
+  idSchema,
+  userSchema
 }

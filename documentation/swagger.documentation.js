@@ -1,118 +1,118 @@
 export const swaggerDocument =
 {
-    "openapi": "3.0.2",
-    "info": {
-      "title": "Earth Wiki Api",
-      "version": "1.0.0",
-      "description": "",
-      "contact": {
-        "url": "https://github.com/Gui-Luz/earth-wiki"
+    'openapi': '3.0.2',
+    'info': {
+      'title': 'Earth Wiki Api',
+      'version': '1.0.0',
+      'description': '',
+      'contact': {
+        'url': 'https://github.com/Gui-Luz/earth-wiki'
       },
-      "tags": [
+      'tags': [
         {
-          "name": "Users",
-          "description": "Endpoints related to users"
+          'name': 'Users',
+          'description': 'Endpoints related to users'
         },
         {
-          "name": "Auth",
-          "description": "Basic authorization endpoint"
+          'name': 'Auth',
+          'description': 'Basic authorization endpoint'
         }
       ],
     },
-    "servers": [
+    'servers': [
       {
-        "url": "http://localhost:3000",
-        "description": "Development server"
+        'url': 'http://localhost:3000',
+        'description': 'Development server'
       }
     ],
-    "paths": {
-      "/auth": {
-        "post": {
-          "summary": "Authenticate a user using Basic Authentication",
-          "tags": ["Auth"],
-          "description": "This endpoint authenticates a user using Basic Authentication. The user must provide a valid username and password in the Authorization header.",
-          "consumes": [
-            "application/json"
+    'paths': {
+      '/auth': {
+        'post': {
+          'summary': 'Authenticate a user using Basic Authentication',
+          'tags': ['Auth'],
+          'description': 'This endpoint authenticates a user using Basic Authentication. The user must provide a valid username and password in the Authorization header.',
+          'consumes': [
+            'application/json'
           ],
-          "produces": [
-            "application/json"
+          'produces': [
+            'application/json'
           ],
-          "responses": {
-            "200": {
-              "description": "Authentication successful. Returns a token for subsequent API requests.",
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "token": {
-                    "type": "string"
+          'responses': {
+            '200': {
+              'description': 'Authentication successful. Returns a token for subsequent API requests.',
+              'schema': {
+                'type': 'object',
+                'properties': {
+                  'token': {
+                    'type': 'string'
                   }
                 }
               }
             },
-            "401": {
-              "description": "Authentication failed. Invalid credentials.",
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "message": {
-                    "type": "string"
+            '401': {
+              'description': 'Authentication failed. Invalid credentials.',
+              'schema': {
+                'type': 'object',
+                'properties': {
+                  'message': {
+                    'type': 'string'
                   }
                 }
               }
             }
           },
-          "security": [
+          'security': [
             {
-              "BasicAuth": []
+              'BasicAuth': []
             }
           ],
         }
       },
-      "/users": {
-        "get": {
-          "summary": "Get all users",
-          "tags": ["Users"],
-          "responses": {
-            "200": {
-              "description": "Successful response",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/User"
+      '/users': {
+        'get': {
+          'summary': 'Get all users',
+          'tags': ['Users'],
+          'responses': {
+            '200': {
+              'description': 'Successful response',
+              'content': {
+                'application/json': {
+                  'schema': {
+                    'type': 'array',
+                    'items': {
+                      '$ref': '#/components/schemas/User'
                     }
                   }
                 }
               }
             }
           },
-          "security": [
+          'security': [
             {
-              "BearerAuth": []
+              'BearerAuth': []
             }
           ],
         },
-        "post": {
-          "summary": "Create a new user",
-          "tags": ["Users"],
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
+        'post': {
+          'summary': 'Create a new user',
+          'tags': ['Users'],
+          'requestBody': {
+            'required': true,
+            'content': {
+              'application/json': {
+                'schema': {
+                  '$ref': '#/components/schemas/User'
                 }
               }
             }
           },
-          "responses": {
-            "201": {
-              "description": "User created",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/User"
+          'responses': {
+            '201': {
+              'description': 'User created',
+              'content': {
+                'application/json': {
+                  'schema': {
+                    '$ref': '#/components/schemas/User'
                   }
                 }
               }
@@ -120,154 +120,154 @@ export const swaggerDocument =
           },
         }
       },
-      "/users/{id}": {
-        "get": {
-          "summary": "Get a user by ID",
-          "tags": ["Users"],
-          "parameters": [
+      '/users/{id}': {
+        'get': {
+          'summary': 'Get a user by ID',
+          'tags': ['Users'],
+          'parameters': [
             {
-              "in": "path",
-              "name": "id",
-              "required": true,
-              "schema": {
-                "type": "integer"
+              'in': 'path',
+              'name': 'id',
+              'required': true,
+              'schema': {
+                'type': 'integer'
               }
             }
           ],
-          "responses": {
-            "200": {
-              "description": "Successful response",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/User"
+          'responses': {
+            '200': {
+              'description': 'Successful response',
+              'content': {
+                'application/json': {
+                  'schema': {
+                    '$ref': '#/components/schemas/User'
                   }
                 }
               }
             },
-            "404": {
-              "description": "User not found"
+            '404': {
+              'description': 'User not found'
             },
           },
-          "security": [
+          'security': [
             {
-              "BearerAuth": []
+              'BearerAuth': []
             }
           ],
         },
-        "put": {
-          "summary": "Update a user",
-          "tags": ["Users"],
-          "parameters": [
+        'put': {
+          'summary': 'Update a user',
+          'tags': ['Users'],
+          'parameters': [
             {
-              "in": "path",
-              "name": "id",
-              "required": true,
-              "schema": {
-                "type": "integer"
+              'in': 'path',
+              'name': 'id',
+              'required': true,
+              'schema': {
+                'type': 'integer'
               }
             }
           ],
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
+          'requestBody': {
+            'required': true,
+            'content': {
+              'application/json': {
+                'schema': {
+                  '$ref': '#/components/schemas/User'
                 }
               }
             }
           },
-          "responses": {
-            "200": {
-              "description": "User updated",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/User"
+          'responses': {
+            '200': {
+              'description': 'User updated',
+              'content': {
+                'application/json': {
+                  'schema': {
+                    '$ref': '#/components/schemas/User'
                   }
                 }
               }
             },
-            "404": {
-              "description": "User not found"
+            '404': {
+              'description': 'User not found'
             },
           },
-          "security": [
+          'security': [
             {
-              "BearerAuth": []
+              'BearerAuth': []
             }
           ],
         },
-        "delete": {
-          "summary": "Delete a user",
-          "tags": ["Users"],
-          "parameters": [
+        'delete': {
+          'summary': 'Delete a user',
+          'tags': ['Users'],
+          'parameters': [
             {
-              "in": "path",
-              "name": "id",
-              "required": true,
-              "schema": {
-                "type": "integer"
+              'in': 'path',
+              'name': 'id',
+              'required': true,
+              'schema': {
+                'type': 'integer'
               }
             }
           ],
-          "responses": {
-            "204": {
-              "description": "User deleted"
+          'responses': {
+            '204': {
+              'description': 'User deleted'
             },
-            "404": {
-              "description": "User not found"
+            '404': {
+              'description': 'User not found'
             }
           },
-          "security": [
+          'security': [
             {
-              "BearerAuth": []
+              'BearerAuth': []
             }
           ],
         }
       }
     },
-    "components": {
-        "schemas": {
-            "User": {
-                "type": "object",
-                "properties": {
-                    "username": {
-                      "type": "string",
-                      "example": "jonesalbert.1985"
+    'components': {
+        'schemas': {
+            'User': {
+                'type': 'object',
+                'properties': {
+                    'username': {
+                      'type': 'string',
+                      'example': 'jonesalbert.1985'
                     },
-                    "email": {
-                      "type": "string",
-                      "example": "jonesalbert@earth.com"
+                    'email': {
+                      'type': 'string',
+                      'example': 'jonesalbert@earth.com'
                     },
-                    "firstName": {
-                        "type": "string",
-                        "example": "Albert"
+                    'firstName': {
+                        'type': 'string',
+                        'example': 'Albert'
                     },
-                    "lastName": {
-                        "type": "string",
-                        "example": "Jones"
+                    'lastName': {
+                        'type': 'string',
+                        'example': 'Jones'
                     },
-                    "password": {
-                      "type": "string",
-                      "example": "albertjoneskey"
+                    'password': {
+                      'type': 'string',
+                      'example': 'albertjoneskey'
                   },
                 }
             },
         },
-        "securitySchemes": {
-          "BasicAuth": {
-            "type": "http",
-            "scheme": "basic",
-            "in": "header",
-            "description": "Basic authorization"
+        'securitySchemes': {
+          'BasicAuth': {
+            'type': 'http',
+            'scheme': 'basic',
+            'in': 'header',
+            'description': 'Basic authorization'
           },
-          "BearerAuth": {
-            "type": "http",
-            "scheme": "bearer",
-            "bearerFormat": "JWT",
-            "description": "JWT Authorization header using the Bearer scheme. Example: 'Bearer {token}'"
+          'BearerAuth': {
+            'type': 'http',
+            'scheme': 'bearer',
+            'bearerFormat': 'JWT',
+            'description': "JWT Authorization header using the Bearer scheme. Example: 'Bearer {token}'"
           },
         }
     }
