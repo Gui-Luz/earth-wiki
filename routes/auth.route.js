@@ -6,32 +6,32 @@ import User from '../repository/user.repository.js'
 export const authRouter = express.Router()
 
 async function checkPassword (req, res, next) {
-  try {
-    const base64 = req.headers.authorization.split('Basic ')[1]
-    const decodedString = Buffer.from(base64, 'base64').toString('utf-8')
-    const username = decodedString.split(':')[0]
-    const password = decodedString.split(':')[1]
+	try {
+		const base64 = req.headers.authorization.split('Basic ')[1]
+		const decodedString = Buffer.from(base64, 'base64').toString('utf-8')
+		const username = decodedString.split(':')[0]
+		const password = decodedString.split(':')[1]
 
-    const user = await User.getUserByUsername(username)
-    if (user) {
-      bcrypt.compare(password, user.password, function (err, result) {
-        if (err) {
-          console.log('Error:', err)
-        } else if (result) {
-          console.log('OK')
-          req.user = user
-          next()
-        } else {
-          console.log(result)
-          res.status(401).send('Permission denied')
-        }
-      })
-    } else {
-      res.status(401).send('Permission denied')
-    }
-  } catch (err) {
-    next(err)
-  }
+		const user = await User.getUserByUsername(username)
+		if (user) {
+			bcrypt.compare(password, user.password, function (err, result) {
+				if (err) {
+					console.log('Error:', err)
+				} else if (result) {
+					console.log('OK')
+					req.user = user
+					next()
+				} else {
+					console.log(result)
+					res.status(401).send('Permission denied')
+				}
+			})
+		} else {
+			res.status(401).send('Permission denied')
+		}
+	} catch (err) {
+		next(err)
+	}
 }
 
 authRouter.post('/', checkPassword, authController.auth)
