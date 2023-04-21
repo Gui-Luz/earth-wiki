@@ -6,7 +6,7 @@ const sequelize = new Sequelize(
     dialect: 'postgres',
     underscored: true,
     define: {
-      timestamps: false
+      timestamps: true
     }
   }
 )

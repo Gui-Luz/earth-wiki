@@ -31,10 +31,6 @@ const User = db.define('users', {
   role: {
     type: Sequelize.STRING,
     allowNull: false
-  },
-  createdAt: {
-    type: Sequelize.STRING,
-    allowNull: false
   }
 }, {
   schema: 'admin',
