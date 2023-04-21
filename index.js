@@ -19,10 +19,10 @@ app.listen(3000, () => {
   if (process.env.JWT_SECRET) {
     logger.info(`${new Date().toISOString()} API listening on port 3000`)
     // db.sync({ force: true })
-      // .then(() => console.log('User table synchronized'))
-      // .catch((error) => console.error('Error synchronizing user table:', error));
+    //   .then(() => console.log('User table synchronized'))
+    //   .catch((error) => console.error('Error synchronizing user table:', error));
   } else {
-    console.log('JWT_SECRET is not defined.')
+    logger.info('JWT_SECRET is not defined.')
     process.exit()
   }
 })
