@@ -27,7 +27,7 @@ export const swaggerDocument =
           'description': 'Basic authorization endpoint'
         },
         {
-          'name': 'featureCategory',
+          'name': 'Feature Category',
           'description': 'Feature Category endpoint'
         }
       ],

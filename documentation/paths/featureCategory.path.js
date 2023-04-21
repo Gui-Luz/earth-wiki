@@ -1,7 +1,7 @@
 export const featureCategoryPath = {
     'post': {
         'summary': 'Create a feature category',
-        'tags': ['featureCategory'],
+        'tags': ['Feature Category'],
         'requestBody': {
           'required': true,
           'content': {
@@ -24,5 +24,10 @@ export const featureCategoryPath = {
             }
           }
         },
+        'security': [
+          {
+            'BearerAuth': []
+          }
+        ],
       }
 }
