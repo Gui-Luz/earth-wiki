@@ -12,7 +12,7 @@ async function postUser(req, res, next) {
             password: req.body.password,
         });
         if (!error) {
-            const  { id } = await usersService.postUser(req.body);
+            const { id } = await usersService.postUser(req.body);
             res.status(200).json({"message": "user created", id})
         }else {
             res.status(400).json({ error: error.details[0].message });
@@ -49,9 +49,9 @@ async function deleteUser(req, res, next) {
         });
         if (!error) {
             if (req.params.id == req.user.id) {
-                const user = await usersService.deleteUser(req.params.id);
-                if (user) {
-                    res.status(200).json(user.id)
+                const result = await usersService.deleteUser(req.params.id);
+                if (result === 1) {
+                    res.status(200).json("User deleted.")
                 } else {
                     res.status(400).json('User not found')
                 }

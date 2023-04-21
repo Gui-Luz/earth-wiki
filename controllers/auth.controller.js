@@ -7,8 +7,8 @@ async function auth(req, res, next) {
         const payload = {
             "id": req.user.id,
             "username": req.user.username,
-            "firs_name": req.user.first_name,
-            "last_name": req.user.last_name,
+            "firsName": req.user.first_name,
+            "lastName": req.user.last_name,
             "email": req.user.email,
             "role": req.user.role
         }

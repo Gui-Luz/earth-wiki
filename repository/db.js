@@ -1,12 +1,14 @@
-import pg from "pg";
+import Sequelize from "sequelize";
 
-export async function connect() {
-    if (global.connection) {
-        return global.connection.connect();
+const sequelize = new Sequelize(
+    process.env.POSTGRES_STRING,
+    {
+        dialect: "postgres",
+        underscored: true,
+        define: {
+            timestamps: false
+        }
     }
-    const pool = new pg.Pool({
-        connectionString: process.env.POSTGRES_STRING
-    });
-    global.connection = pool;
-    return pool.connect();
-};
+)
+
+export default sequelize;

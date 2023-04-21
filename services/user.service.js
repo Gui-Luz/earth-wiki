@@ -1,16 +1,17 @@
-import pg from "../repository/user.repository.js";
+import User from "../repository/user.repository.js";
+import { hasher } from "../utils/hasher/hasher.js";
 
 async function postUser(user) {
     try {
-        if (await pg.getUserByUsername(user.username)) {
+        if (await User.getUserByUsername(user.username)) {
             throw new Error("Username already in use.")
-        } else if (await pg.getUserByEmail(user.email)) {
+        } else if (await User.getUserByEmail(user.email)) {
             throw new Error("Email already in use.")
         } else {
             user.role = "user";
             user.createdAt= new Date().toISOString();
-            const id = await pg.insertUser(user)
-            return id
+            user.password = await hasher(user.password)
+            return await User.insertUser(user) 
         }
     } catch(err) {
         throw err;
@@ -19,7 +20,7 @@ async function postUser(user) {
 
 async function getUser(id) {
     try {
-        const user = await pg.getUserById(id);
+        const user = await User.getUser(id);
         return user
     } catch(err) {
         throw err;
@@ -28,28 +29,35 @@ async function getUser(id) {
 
 async function deleteUser(id) {
     try {
-        const user = await pg.deleteUserById(id);
-        return user
+        const result = await User.deleteUser(id);
+        return result
     } catch(err) {
         throw err;
     }
 }
 
-async function putUser(userOldInfo, userNewInfo) {
+async function putUser(user, userNewInfo) {
     try {
-        const updatedInfo = {
-            'firstName': (userNewInfo.firstName ? userNewInfo.firstName : user.first_name),
-            'lastName': (userNewInfo.lastName ? userNewInfo.lastName : user.last_name),
-            'username': (userNewInfo.username ? userNewInfo.username : user.username),
-            'email': (userNewInfo.email ? userNewInfo.email : user.email),
+        if (await User.getUserByUsername(userNewInfo.username)) {
+            throw new Error("Username already in use.")
+        } else if (await User.getUserByEmail(userNewInfo.email)) {
+            throw new Error("Email already in use.")
+        } else {
+            const updatedInfo = {
+                'id': user.id,
+                'firstName': (userNewInfo.firstName ? userNewInfo.firstName : user.firstName),
+                'lastName': (userNewInfo.lastName ? userNewInfo.lastName : user.lastName),
+                'username': (userNewInfo.username ? userNewInfo.username : user.username),
+                'email': (userNewInfo.email ? userNewInfo.email : user.email),
+            }
+            const newUserInfo = await User.updateUser(updatedInfo);
+            const selectedKeys = ['id', 'username', 'lastName', 'firstName', 'email']
+            const filteredInfo = Object.fromEntries(
+                Object.entries(newUserInfo.toJSON())
+                .filter(([key]) => selectedKeys.includes(key))
+            );
+            return filteredInfo
         }
-        const newUserInfo = await pg.updateUserById(userOldInfo.id, updatedInfo);
-        const selectedKeys = ['id', 'username', 'last_name', 'first_name', 'email', 'role']
-        const filteredInfo = Object.fromEntries(
-            Object.entries(newUserInfo)
-            .filter(([key]) => selectedKeys.includes(key))
-        );
-        return filteredInfo
     } catch(err) {
         throw err;
     }
@@ -57,7 +65,7 @@ async function putUser(userOldInfo, userNewInfo) {
 
 async function getUsers() {
     try {
-        const user = await pg.getUsers();
+        const user = await User.getUsers();
         return user
     } catch(err) {
         throw err;
