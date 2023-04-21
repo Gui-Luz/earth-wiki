@@ -18,7 +18,6 @@ async function checkPassword (req, res, next) {
 				if (err) {
 					console.log('Error:', err)
 				} else if (result) {
-					console.log('OK')
 					req.user = user
 					next()
 				} else {
