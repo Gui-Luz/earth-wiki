@@ -6,6 +6,10 @@ import { basicAuth } from "./securitySchemes/basicAuth.securitySchemes.js";
 import { bearerAuth } from "./securitySchemes/bearerAuth.securitySchemes.js";
 import { featureCategorySchema } from "./schemas/featureCategory.schema.js";
 import { featureCategoryPath } from "./paths/featureCategory.path.js";
+import { featureItemSchema } from "./schemas/featureItem.schema.js";
+import { featureItemPath } from "./paths/featureItem.path.js";
+import { pointPath } from "./paths/point.path.js";
+import { pointSchema } from "./schemas/point.schema.js";
 
 export const swaggerDocument =
 {
@@ -29,6 +33,14 @@ export const swaggerDocument =
         {
           'name': 'Feature Category',
           'description': 'Feature Category endpoint'
+        },
+        {
+          'name': 'Feature Item',
+          'description': 'Feature Item endpoint'
+        },
+        {
+          'name': 'Point',
+          'description': 'Point endpoint'
         }
       ],
     },
@@ -42,12 +54,16 @@ export const swaggerDocument =
       '/auth': auth,
       '/users': users,
       '/users/{id}': usersId,
-      '/featureCategory': featureCategoryPath
+      '/featureCategory': featureCategoryPath,
+      '/featureItem': featureItemPath,
+      '/point': pointPath
     },
     'components': {
         'schemas': {
             'User': User,
-            'Feature Category': featureCategorySchema
+            'Feature Category': featureCategorySchema,
+            'Feature Item': featureItemSchema,
+            'Point': pointSchema
         },
         'securitySchemes': {
           'BasicAuth': basicAuth,

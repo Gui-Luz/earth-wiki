@@ -4,6 +4,8 @@ import { logger } from './utils/logger/logger.js'
 import { usersRoute } from './routes/users.route.js'
 import { authRouter } from './routes/auth.route.js'
 import { featureCategoryRoute } from './routes/featureCategory.route.js'
+import { featureItemRoute } from './routes/featureItem.route.js'
+import { pointRoute } from './routes/point.route.js'
 import { swaggerDocument } from './documentation/swagger.documentation.js'
 import db from './repository/db.js'
 
@@ -14,6 +16,8 @@ app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 app.use('/users', usersRoute)
 app.use('/auth', authRouter)
 app.use('/featureCategory', featureCategoryRoute)
+app.use('/featureItem', featureItemRoute)
+app.use('/point', pointRoute)
 
 app.listen(3000, () => {
   if (process.env.JWT_SECRET) {

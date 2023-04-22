@@ -3,23 +3,23 @@ export const User = {
     'properties': {
         'username': {
           'type': 'string',
-          'example': 'jonesalbert.1985'
+          'example': 'admin'
         },
         'email': {
           'type': 'string',
-          'example': 'jonesalbert@earth.com'
+          'example': 'admin@admin.com'
         },
         'firstName': {
             'type': 'string',
-            'example': 'Albert'
+            'example': 'Admin'
         },
         'lastName': {
             'type': 'string',
-            'example': 'Jones'
+            'example': 'Superuser'
         },
         'password': {
           'type': 'string',
-          'example': 'albertjoneskey'
+          'example': 'admin'
       },
     }
 }

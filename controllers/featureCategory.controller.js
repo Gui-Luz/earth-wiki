@@ -1,5 +1,5 @@
-import schemas from '../utils/schemas/featureCategory.schemas.js';
 import featureCategoryService from '../services/featureCategory.service.js';
+import schemas from '../utils/schemas/featureCategory.schemas.js';
 
 async function post (req, res, next) {
     try {
