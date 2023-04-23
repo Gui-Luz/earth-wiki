@@ -1,12 +1,12 @@
 import featureCategoryModel from "../models/featureCategory.models.js"
 
 async function getFeatureCategoryByName(name) {
-    return await featureCategoryModel.findOne({
-      where: {
-        name
-      }
-    })
-  }
+  return await featureCategoryModel.findOne({
+    where: {
+      name
+    }
+  })
+}
 
 async function insertFeatureCategory (featureCategory) {
     try {
@@ -16,7 +16,12 @@ async function insertFeatureCategory (featureCategory) {
     }
 }
 
+async function getFeatureCategories() {
+  return await featureCategoryModel.findAll()
+}
+
 export default {
     insertFeatureCategory,
-    getFeatureCategoryByName
+    getFeatureCategoryByName,
+    getFeatureCategories
 }

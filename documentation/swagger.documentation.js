@@ -11,7 +11,8 @@ import { featureItemPath } from "./paths/featureItem.path.js";
 import { rulePath } from "./paths/rule.path.js";
 import { ruleSchema } from "./schemas/rule.schema.js";
 import { scoreSchema } from "./schemas/score.schema.js";
-import { scorePath } from "./paths/score.path.js"
+import { scorePath } from "./paths/score.path.js";
+import { featureCategoryName } from "./paths/featureCategoryName.path.js";
 
 export const swaggerDocument =
 {
@@ -61,6 +62,7 @@ export const swaggerDocument =
       '/users': users,
       '/users/{id}': usersId,
       '/featureCategory': featureCategoryPath,
+      '/featureCategory/{name}': featureCategoryName,
       '/featureItem': featureItemPath,
       '/rule': rulePath,
       '/score': scorePath

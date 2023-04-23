@@ -1,6 +1,6 @@
 import featureItemRepository from "../repository/featureItem.repository.js";
 
-async function postFeatureItem (featureCategory, user) {
+async function post (featureCategory, user) {
 	try {
         featureCategory.creationUserId = user.id
         featureCategory.updatedUserId = user.id
@@ -11,5 +11,5 @@ async function postFeatureItem (featureCategory, user) {
 }
 
 export default {
-    postFeatureItem
+    postFeatureItem: post
 }
