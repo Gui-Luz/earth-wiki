@@ -1,7 +1,8 @@
-import Sequelize from 'sequelize'
+import Sequelize from 'sequelize';
+import { POSTGRES_STRING } from '../utils/env/env.js';
 
 const sequelize = new Sequelize(
-  process.env.POSTGRES_STRING,
+  POSTGRES_STRING,
   {
     dialect: 'postgres',
     underscored: true,

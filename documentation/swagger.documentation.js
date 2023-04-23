@@ -10,6 +10,8 @@ import { featureItemSchema } from "./schemas/featureItem.schema.js";
 import { featureItemPath } from "./paths/featureItem.path.js";
 import { pointPath } from "./paths/point.path.js";
 import { pointSchema } from "./schemas/point.schema.js";
+import { scoreSchema } from "./schemas/score.schema.js";
+import { scorePath } from "./paths/score.path.js"
 
 export const swaggerDocument =
 {
@@ -41,6 +43,10 @@ export const swaggerDocument =
         {
           'name': 'Point',
           'description': 'Point endpoint'
+        },
+        {
+          'name': 'Score',
+          'description': 'Score endpoint'
         }
       ],
     },
@@ -56,14 +62,16 @@ export const swaggerDocument =
       '/users/{id}': usersId,
       '/featureCategory': featureCategoryPath,
       '/featureItem': featureItemPath,
-      '/point': pointPath
+      '/point': pointPath,
+      '/score': scorePath
     },
     'components': {
         'schemas': {
             'User': User,
             'Feature Category': featureCategorySchema,
             'Feature Item': featureItemSchema,
-            'Point': pointSchema
+            'Point': pointSchema,
+            'Score': scoreSchema
         },
         'securitySchemes': {
           'BasicAuth': basicAuth,

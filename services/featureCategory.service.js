@@ -3,10 +3,7 @@ import featureCategoryRepository from "../repository/featureCategory.repository.
 async function postFeatureCategory (featureCategory, user) {
 	try {
         featureCategory.name = featureCategory.name.toUpperCase()
-        if (user.role !== 'admin'){
-            throw new Error('Permission denied.')
-        }
-		else if (await featureCategoryRepository.getFeatureCategoryByName(featureCategory.name)) {
+		if (await featureCategoryRepository.getFeatureCategoryByName(featureCategory.name)) {
 			throw new Error('Feature category name already in use.')
 		} else {
             featureCategory.updatedUserId = user.id;

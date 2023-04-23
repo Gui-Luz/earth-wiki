@@ -29,7 +29,7 @@ async function checkPassword (req, res, next) {
 			res.status(401).send('Permission denied')
 		}
 	} catch (err) {
-		next(err)
+		res.status(401).send('Permission denied')
 	}
 }
 
