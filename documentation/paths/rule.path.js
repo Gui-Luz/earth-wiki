@@ -1,24 +1,24 @@
-export const pointPath = {
+export const rulePath = {
     'post': {
-        'summary': 'Create a new point action',
-        'tags': ['Points'],
+        'summary': 'Create a new game rule',
+        'tags': ['Rule'],
         'requestBody': {
           'required': true,
           'content': {
             'application/json': {
               'schema': {
-                '$ref': '#/components/schemas/Point'
+                '$ref': '#/components/schemas/Rule'
               }
             }
           }
         },
         'responses': {
           '201': {
-            'description': 'Point created',
+            'description': 'Rule created',
             'content': {
               'application/json': {
                 'schema': {
-                  '$ref': '#/components/schemas/Point'
+                  '$ref': '#/components/schemas/Rule'
                 }
               }
             }

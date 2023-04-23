@@ -1,7 +1,7 @@
 import express from 'express'
 import usersController from '../controllers/users.controller.js'
-import { verifyJWT } from './commonMiddleware.js/verifyJwt.js'
-import { verifyJWTAdmin } from './commonMiddleware.js/verifyJWTAdmin.js'
+import { verifyJWT } from './commonMiddleware/verifyJwt.js'
+import { verifyJWTAdmin } from './commonMiddleware/verifyJWTAdmin.js'
 
 export const usersRoute = express.Router()
 

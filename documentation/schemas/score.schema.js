@@ -5,7 +5,7 @@ export const scoreSchema = {
           'type': 'integer',
           'example': 1
         },
-        'pointId': {
+        'ruleId': {
           'type': 'integer',
           'example': 1
         },

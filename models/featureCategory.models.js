@@ -1,6 +1,6 @@
 import Sequelize from 'sequelize'
 import db from '../repository/db.js'
-import User from "./users.models.js"
+import User from "./user.models.js"
 
 const featureCategory = db.define('featureCategory', {
     id: {

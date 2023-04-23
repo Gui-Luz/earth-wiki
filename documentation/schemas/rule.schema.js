@@ -1,4 +1,4 @@
-export const pointSchema = {
+export const ruleSchema = {
     'type': 'object',
     'properties': {
         'action': {

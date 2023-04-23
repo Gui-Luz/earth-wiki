@@ -10,8 +10,9 @@ async function post (req, res, next) {
             geom: req.body.geom,
         })
         if (!error) {
-            await featureItemService.postFeatureItem(req.body, req.user)
-            res.status(200).json({ message: 'Feature item created' })
+            const { id } = await featureItemService.postFeatureItem(req.body, req.user)
+            console.log
+            res.status(200).json({ message: 'Feature item created', id })
         } else {
             res.status(400).json({ error: error.details[0].message })
         }

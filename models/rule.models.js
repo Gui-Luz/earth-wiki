@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize'
 import db from '../repository/db.js'
 
-const pointModel = db.define('point', {
+const ruleModel = db.define('rules', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -21,4 +21,4 @@ const pointModel = db.define('point', {
     underscored: true
   })
 
-export default pointModel
+export default ruleModel

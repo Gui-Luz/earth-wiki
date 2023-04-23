@@ -8,8 +8,8 @@ import { featureCategorySchema } from "./schemas/featureCategory.schema.js";
 import { featureCategoryPath } from "./paths/featureCategory.path.js";
 import { featureItemSchema } from "./schemas/featureItem.schema.js";
 import { featureItemPath } from "./paths/featureItem.path.js";
-import { pointPath } from "./paths/point.path.js";
-import { pointSchema } from "./schemas/point.schema.js";
+import { rulePath } from "./paths/rule.path.js";
+import { ruleSchema } from "./schemas/rule.schema.js";
 import { scoreSchema } from "./schemas/score.schema.js";
 import { scorePath } from "./paths/score.path.js"
 
@@ -41,8 +41,8 @@ export const swaggerDocument =
           'description': 'Feature Item endpoint'
         },
         {
-          'name': 'Point',
-          'description': 'Point endpoint'
+          'name': 'Rule',
+          'description': 'Rule endpoint'
         },
         {
           'name': 'Score',
@@ -62,7 +62,7 @@ export const swaggerDocument =
       '/users/{id}': usersId,
       '/featureCategory': featureCategoryPath,
       '/featureItem': featureItemPath,
-      '/point': pointPath,
+      '/rule': rulePath,
       '/score': scorePath
     },
     'components': {
@@ -70,7 +70,7 @@ export const swaggerDocument =
             'User': User,
             'Feature Category': featureCategorySchema,
             'Feature Item': featureItemSchema,
-            'Point': pointSchema,
+            'Rule': ruleSchema,
             'Score': scoreSchema
         },
         'securitySchemes': {

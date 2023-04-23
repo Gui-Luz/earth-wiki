@@ -1,6 +1,6 @@
 import express from 'express'
 import featureItemController from '../controllers/featureItem.controller.js'
-import { verifyJWT } from './commonMiddleware.js/verifyJwt.js'
+import { verifyJWT } from './commonMiddleware/verifyJwt.js'
 
 export const featureItemRoute = express.Router()
 

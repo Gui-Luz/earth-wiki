@@ -1,5 +1,5 @@
 import schemas from '../utils/schemas/point.schemas.js';
-import pointService from '../services/point.service.js';
+import pointService from '../services/rule.service.js';
 
 
 async function post (req, res, next) {
@@ -9,10 +9,10 @@ async function post (req, res, next) {
             point: req.body.point,
         })
         if (!error) {
-            await pointService.post(req.body)
-            res.status(200).json({ message: 'Point created' })
+            const { id } = await pointService.post(req.body)
+            res.status(200).json({ message: 'Rule created' })
         } else {
-            res.status(400).json({ error: error.details[0].message })
+            res.status(400).json({ error: error.details[0].message, id })
         }
     } catch (err) {
       next(err)

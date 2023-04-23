@@ -1,6 +1,6 @@
 import express from 'express'
 import featureCategoryController from '../controllers/featureCategory.controller.js'
-import { verifyJWTAdmin } from './commonMiddleware.js/verifyJwtAdmin.js'
+import { verifyJWTAdmin } from './commonMiddleware/verifyJwtAdmin.js'
 
 
 export const featureCategoryRoute = express.Router()

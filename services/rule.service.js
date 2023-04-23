@@ -1,4 +1,4 @@
-import pointRepository from "../repository/point.repository.js";
+import pointRepository from "../repository/rule.repository.js";
 
 async function post (point) {
 	try {

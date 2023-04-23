@@ -1,6 +1,6 @@
 import express from 'express'
 import scoreController from '../controllers/score.controller.js'
-import { verifyJWT } from './commonMiddleware.js/verifyJwt.js'
+import { verifyJWT } from './commonMiddleware/verifyJwt.js'
 
 export const scoreRoute = express.Router()
 

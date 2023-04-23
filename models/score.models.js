@@ -1,17 +1,17 @@
 import Sequelize from 'sequelize';
 import db from '../repository/db.js';
-import User from './users.models.js';
+import User from './user.models.js';
 import featureItem from './featureItem.models.js';
-import pointModel from './point.models.js';
+import ruleModel from './rule.models.js';
 
-const scoreModel = db.define('score', {
+const scoreModel = db.define('scores', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },  
-    pointId: {
+    ruleId: {
         type: Sequelize.INTEGER,
         allowNull: false,
     },
@@ -33,8 +33,8 @@ scoreModel.belongsTo(User, {
 
 });
 
-scoreModel.belongsTo(pointModel, {
-    foreignKey: "pointId",
+scoreModel.belongsTo(ruleModel, {
+    foreignKey: "ruleId",
 
 });
 
