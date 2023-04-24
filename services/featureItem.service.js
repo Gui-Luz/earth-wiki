@@ -1,5 +1,17 @@
 import featureItemRepository from "../repository/featureItem.repository.js";
 
+async function get(params) {
+	try {
+        if (params.featureCategoryId){
+            return await featureItemRepository.getFeatureItemsWhereCategory(params.featureCategoryId)
+        } else {
+            return await featureItemRepository.getFeatureItems()
+        }
+	} catch (err) {
+		throw err
+	}
+}
+
 async function post (featureCategory, user) {
 	try {
         featureCategory.creationUserId = user.id
@@ -11,5 +23,6 @@ async function post (featureCategory, user) {
 }
 
 export default {
-    postFeatureItem: post
+    post,
+    get
 }

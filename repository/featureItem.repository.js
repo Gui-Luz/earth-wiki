@@ -8,6 +8,28 @@ async function insertFeatureItem (featureItem) {
     }
 }
 
+async function getFeatureItems () {
+    try {
+        return await featureItemModel.findAll()
+    } catch (err) {
+        throw err
+    }
+}
+
+async function getFeatureItemsWhereCategory (featureCategoryId) {
+    try {
+        return await featureItemModel.findAll({
+            where: {
+                featureCategoryId
+            }
+        })
+    } catch (err) {
+        throw err
+    }
+}
+
 export default {
-    insertFeatureItem
+    insertFeatureItem,
+    getFeatureItems,
+    getFeatureItemsWhereCategory
 }
