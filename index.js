@@ -1,5 +1,6 @@
 import express from 'express'
 import swaggerUi from 'swagger-ui-express'
+import cors from 'cors'
 import { logger } from './utils/logger/logger.js'
 import { usersRoute } from './routes/users.route.js'
 import { authRouter } from './routes/auth.route.js'
@@ -9,7 +10,13 @@ import { ruleRoute } from './routes/rule.route.js'
 import { swaggerDocument } from './documentation/swagger.documentation.js'
 import { scoreRoute } from './routes/score.route.js'
 
+const corsOptions = {
+  origin: 'http://localhost:3001',
+}
+
 const app = express()
+
+app.use(cors(corsOptions))
 
 app.use(express.json())
 app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
@@ -23,7 +30,7 @@ app.use('/score', scoreRoute)
 app.listen(3000, () => {
   try {
     logger.info(`${new Date().toISOString()} API listening on port 3000`)
-  } catch(err) {
+  } catch (err) {
     logger.warning(err)
-  } 
+  }
 })
