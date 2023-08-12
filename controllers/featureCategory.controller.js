@@ -1,9 +1,9 @@
-import featureCategoryService from '../services/featureCategory.service.js';
-import schemas from '../utils/schemas/featureCategory.schemas.js';
+import featureCategoryService from '../services/featureCategory.service.js'
+import schemas from '../utils/schemas/featureCategory.schemas.js'
 
-async function post (req, res, next) {
+async function post(req, res, next) {
   try {
-      const { error, value } = schemas.featureCategorySchema.validate({
+    const { error, value } = schemas.featureCategorySchema.validate({
       name: req.body.name,
       creationUserId: req.body.creationUserId,
     })
@@ -16,11 +16,11 @@ async function post (req, res, next) {
   } catch (err) {
     next(err)
   }
-};
+}
 
-async function get (req, res, next) {
+async function get(req, res, next) {
   try {
-      const { error, value } = schemas.featureCategorySchema.validate({
+    const { error, value } = schemas.featureCategorySchema.validate({
       name: req.params.name,
     })
     if (!error) {
@@ -32,19 +32,21 @@ async function get (req, res, next) {
   } catch (err) {
     next(err)
   }
-};
+}
 
-async function getAll (req, res, next) {
+async function getAll(req, res, next) {
   try {
-    const featureCategories = await featureCategoryService.getAll()
+    const featureCategories = await featureCategoryService.getAll(
+      req.query.page
+    )
     res.status(200).json(featureCategories)
   } catch (err) {
     next(err)
   }
-};
+}
 
-export default { 
+export default {
   post,
   getAll,
-  get
+  get,
 }
